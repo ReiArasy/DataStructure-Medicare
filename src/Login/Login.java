@@ -1,5 +1,6 @@
-package Login;
+package src.Login;
 import java.util.Scanner;
+import src.mainmenu.mainmenu; 
 
 // Class untuk menyimpan data pengguna (user)
 class User {
@@ -59,6 +60,7 @@ class UserManager {
         User user = findUser(username);  // Cari user berdasarkan username
         if (user != null && user.password.equals(password)) {  // Jika user ditemukan dan password sesuai
             System.out.println("Login berhasil. Selamat datang, " + username + "!");
+            mainmenu.showMainMenu(user.username); 
             return true;  // Login berhasil
         } else {
             System.out.println("Username atau password salah.");
@@ -68,7 +70,7 @@ class UserManager {
 }
 
 // Aplikasi utama untuk mengelola proses login
-public class LoginApp {
+public class Login {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);  // Membaca input dari pengguna
         UserManager userManager = new UserManager();  // Membuat objek UserManager
