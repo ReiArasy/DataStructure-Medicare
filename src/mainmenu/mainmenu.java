@@ -166,7 +166,7 @@ public class mainmenu {
         while (true) {
             System.out.println("\n==== Tambah ====");
             System.out.println("1. Tambah Kunjungan pasien");
-            System.out.println("2. Pembelian obat"); // total pembelian per jenis/nama obat yang diinputkan nanti= total pembelian obat A ada 10 
+            System.out.println("2. Pembelian obat"); 
             System.out.println("3. Kembali ke Main Menu");
             System.out.print("Pilih menu: ");
             int choice = scanner.nextInt();
