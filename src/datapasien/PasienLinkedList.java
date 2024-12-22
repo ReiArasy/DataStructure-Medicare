@@ -26,7 +26,7 @@ public class PasienLinkedList {
 
     private Pasien head; // Pointer awal dari linked list (head).
 
-    private final Scanner scanner = new Scanner(System.in); // Scanner untuk membaca input dari pengguna.
+    private final Scanner scanner = new Scanner(System.in); 
 
     // Metode untuk menambahkan pasien baru ke linked list.
     public void tambahPasien() {
