@@ -69,7 +69,7 @@ class UserManager {
     }
 }
 
-// Aplikasi utama untuk mengelola proses login
+// untuk mengelola proses login
 public class Login {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);  // Membaca input dari pengguna
@@ -77,10 +77,11 @@ public class Login {
 
         // Loop untuk menu utama aplikasi
         while (true) {
-            System.out.println("\n=== Menu ===");
+            System.out.println("\n - Aplikasi Medicare - ");
+            System.out.println("\n=== Hi!, Silahkan Login ===");
             System.out.println("1. Login");
             System.out.println("2. Keluar");
-            System.out.print("Pilih menu: ");
+            System.out.print("\nPilih menu: ");
             int choice = scanner.nextInt();  // Membaca pilihan menu
             scanner.nextLine();  // Mengkonsumsi newline setelah pilihan menu
 
@@ -93,7 +94,7 @@ public class Login {
                     userManager.login(username, password);  
                 }
                 case 2 -> { 
-                    System.out.println("Keluar dari aplikasi. Sampai jumpa!");
+                    System.out.println("\nAnda Telah Keluar!, Terima Kasih Telah Menggunakan Medicare-App!");
                     return; 
                 }
                 default -> System.out.println("Pilihan tidak valid."); 
