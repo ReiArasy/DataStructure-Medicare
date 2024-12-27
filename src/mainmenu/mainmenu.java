@@ -152,7 +152,7 @@ public class mainmenu {
             scanner.nextLine();
     
             switch (choice) {
-                case 1 -> laporankunjungan();
+                case 1 -> mp.laporanKunjungan();
                 case 2 -> laporanpembelianobat();
                 case 3 -> {
                     return; // Kembali ke menu utama
@@ -173,7 +173,7 @@ public class mainmenu {
             scanner.nextLine();
     
             switch (choice) {
-                case 1 -> tambahKunjungan();
+                case 1 -> mp.tambahKunjungan();
                 case 2 -> pembelianObat();
                 case 3 -> {
                     return; // Kembali ke menu utama
