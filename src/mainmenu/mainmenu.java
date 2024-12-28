@@ -1,13 +1,17 @@
 package src.mainmenu;
 
 import src.Login.Login;
+import src.dataobat.ObatLinkedList;
 import src.datapasien.PasienLinkedList;
+import src.datadokter.DokterLinkedList;
 
 import java.util.Scanner;
 
 public class mainmenu {
     private static Scanner scanner = new Scanner(System.in);
     private static PasienLinkedList mp = new PasienLinkedList();
+    private static ObatLinkedList ol = new ObatLinkedList();
+    private static DokterLinkedList dl = new DokterLinkedList();
 
     public static void showMainMenu(String loggedInRole) {
         while (true) {
@@ -18,8 +22,8 @@ public class mainmenu {
                 System.out.println("3. Kelola Data Obat");
                 System.out.println("4. Lihat Data Transaksi");  //view data transaksi kunjungan dan pembelian obat
                 System.out.println("5. Logout");
-            } else if ("petugas".equalsIgnoreCase(loggedInRole)) {
-                System.out.println("1. Tambah Data Pasien");
+            } else if ("dokter".equalsIgnoreCase(loggedInRole)) {
+                System.out.println("1. Tambah kunjungan Pasien");
                 System.out.println("2. Tambah Transaksi"); //add kunjungan atau pembelian obat
                 System.out.println("3. Lihat Data Transaksi"); // view data transaksi kunjungan dan pembelian obat
                 System.out.println("4. Logout");
@@ -42,7 +46,7 @@ public class mainmenu {
                 }
             } else if ("petugas".equalsIgnoreCase(loggedInRole)) {
                 switch (choice) {
-                    case 1 -> keloladatapasien("petugas");
+                    case 1 -> keloladatapasien("dokter");
                     case 2 -> transaksi();
                     case 3 -> laporan();
                     case 4 -> {
@@ -63,7 +67,7 @@ public class mainmenu {
                 System.out.println("2. Edit Pasien");
                 System.out.println("3. Lihat Data Pasien");
                 System.out.println("4. Kembali ke Main Menu");
-            } else if ("petugas".equalsIgnoreCase(loggedInRole)) {
+            } else if ("dokter".equalsIgnoreCase(loggedInRole)) {
                 System.out.println("1. Tambah Pasien");
                 System.out.println("2. Lihat Data Pasien");
                 System.out.println("3. Kembali ke Main Menu");
@@ -130,9 +134,9 @@ public class mainmenu {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 -> tambahObat();
-                case 2 -> editObat();
-                case 3 -> lihatDataObat();
+                case 1 -> ol.tambahObat();
+                case 2 -> ol.editObat();
+                case 3 -> ol.lihatDataObat();
                 case 4 -> {
                     return; // Kembali ke menu utama
                 }

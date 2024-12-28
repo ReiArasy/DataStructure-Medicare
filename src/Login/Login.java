@@ -24,9 +24,9 @@ class UserManager {
     public UserManager() {
         this.head = null; // Inisialisasi linked list kosong (head = null)
         
-        // Menambahkan pengguna default (admin dan petugas)
+        // Menambahkan pengguna default (admin dan dokter)
         addUser("admin", "admin123");
-        addUser("petugas", "petugas123");
+        addUser("dokter", "dokter123");
     }
 
     // Mencari pengguna berdasarkan username
@@ -41,7 +41,7 @@ class UserManager {
         return null;  // Kembalikan null jika tidak ditemukan
     }
 
-    // Menambahkan pengguna baru (admin atau petugas) ke linked list
+    // Menambahkan pengguna baru (admin atau dokter) ke linked list
     private void addUser(String username, String password) {
         User newUser = new User(username, password);  // Buat user baru
         if (head == null) {  // Jika linked list kosong (head = null)
