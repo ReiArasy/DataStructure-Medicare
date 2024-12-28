@@ -1,4 +1,4 @@
-package src.datadokter;
+package src.manajemen;
 
 import java.util.Scanner; 
 
@@ -20,7 +20,6 @@ public class DokterLinkedList {
         }
     }
     
-
     private Dokter head; // Pointer awal dari linked list (head).
 
     private final Scanner scanner = new Scanner(System.in); 

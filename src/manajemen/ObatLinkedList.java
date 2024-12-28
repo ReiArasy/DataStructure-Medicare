@@ -1,4 +1,4 @@
-package src.dataobat;
+package src.manajemen;
 
 import java.util.Scanner; 
 
