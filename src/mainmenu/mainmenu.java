@@ -1,13 +1,17 @@
 package src.mainmenu;
 
 import src.Login.Login;
-import src.datapasien.PasienLinkedList;
+import src.manajemen.ObatLinkedList;
+import src.manajemen.PasienLinkedList;
+import src.manajemen.DokterLinkedList;
 
 import java.util.Scanner;
 
 public class mainmenu {
     private static Scanner scanner = new Scanner(System.in);
     private static PasienLinkedList mp = new PasienLinkedList();
+    private static ObatLinkedList ol = new ObatLinkedList();
+    private static DokterLinkedList dl = new DokterLinkedList();
 
     public static void showMainMenu(String loggedInRole) {
         while (true) {
@@ -99,9 +103,7 @@ public class mainmenu {
         while (true) {
             System.out.println("\n==== Kelola Data Dokter ====");
             System.out.println("1. Tambah Dokter");
-            System.out.println("2. Edit Dokter"); // (sama seperti manage pasien)ga ku kasih delete karena siapa tau
-                                                  // datanya diperlukan suatu hari nanti, jadi nanti tambahkan status
-                                                  // yang bisa di edit (status pasien: keluar/ masih dirumah sakit)
+            System.out.println("2. Edit Dokter");
             System.out.println("3. Read Data Dokter");
             System.out.println("4. Kembali ke Main Menu");
             System.out.print("Pilih menu: ");
@@ -109,9 +111,9 @@ public class mainmenu {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 -> tambahDokter();
-                case 2 -> editDokter();
-                case 3 -> lihatDataDokter();
+                case 1 -> dl.tambahDokter();
+                case 2 -> dl.editDokter();
+                case 3 -> dl.lihatDataDokter();
                 case 4 -> {
                     return; // Kembali ke menu utama
                 }
@@ -124,8 +126,7 @@ public class mainmenu {
         while (true) {
             System.out.println("\n==== Kelola Data Obat ====");
             System.out.println("1. Tambah Obat");
-            System.out.println("2. Edit Obat"); // (manage obat, disini akan ada status obat tersedia atau tidak nya
-                                                // obat/ obat masih di produksi atau tidak)
+            System.out.println("2. Edit Obat");
             System.out.println("3. Read Data Obat");
             System.out.println("4. Kembali ke Main Menu");
             System.out.print("Pilih menu: ");
@@ -133,9 +134,9 @@ public class mainmenu {
             scanner.nextLine();
 
             switch (choice) {
-                case 1 -> tambahObat();
-                case 2 -> editObat();
-                case 3 -> lihatDataObat();
+                case 1 -> ol.tambahObat();
+                case 2 -> ol.editObat();
+                case 3 -> ol.lihatDataObat();
                 case 4 -> {
                     return; // Kembali ke menu utama
                 }
@@ -158,7 +159,7 @@ public class mainmenu {
 
             switch (choice) {
                 case 1 -> mp.laporanKunjungan();
-                case 2 -> laporanpembelianobat();
+                case 2 -> ol.laporanpembelianobat();
                 case 3 -> {
                     return; // Kembali ke menu utama
                 }
@@ -179,7 +180,7 @@ public class mainmenu {
 
             switch (choice) {
                 case 1 -> mp.tambahKunjungan();
-                case 2 -> pembelianObat();
+                case 2 -> ol.pembelianObat();
                 case 3 -> {
                     return; // Kembali ke menu utama
                 }
