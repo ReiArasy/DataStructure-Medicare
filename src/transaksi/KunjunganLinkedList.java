@@ -67,7 +67,7 @@ public class KunjunganLinkedList {
         System.out.println("Data kunjungan berhasil ditambahkan!\n");
     }
 
-    public void lihatDataKunjungan() {
+    public void viewDataKunjungan() {
         if (head == null) {
             System.out.println("Tidak ada data kunjungan.\n");
             return;
