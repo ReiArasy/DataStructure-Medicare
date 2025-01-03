@@ -13,21 +13,19 @@ public class mainmenu {
     private static KunjunganLinkedList kl = new KunjunganLinkedList(dl);
     private static PembelianObatLinkedList po = new PembelianObatLinkedList(ol);
 
-    // Metode untuk menampilkan menu utama berdasarkan peran (admin atau dokter)
     public static void showMainMenu(String loggedInRole) {
-        boolean isLoggedOut = false; // Flag untuk memastikan pengguna keluar dari menu setelah logout
+        boolean isLoggedOut = false;
 
-        // Perulangan menu utama, akan berhenti jika isLoggedOut == true
         while (!isLoggedOut) {
 
             System.out.println("\n==== Main Menu (" + loggedInRole + ") ====");
-            if ("admin".equalsIgnoreCase(loggedInRole)) { // Jika pengguna adalah admin
+            if ("admin".equalsIgnoreCase(loggedInRole)) {
                 System.out.println("1. Kelola Data Dokter");
                 System.out.println("2. Kelola Data Obat");
                 System.out.println("3. Lihat Data Kunjungan");
                 System.out.println("4. Lihat Data Transaksi Pembelian Obat");
                 System.out.println("5. Log-out");
-            } else if ("dokter".equalsIgnoreCase(loggedInRole)) { // Jika pengguna adalah dokter
+            } else if ("dokter".equalsIgnoreCase(loggedInRole)) {
                 System.out.println("1. Tambah kunjungan Pasien");
                 System.out.println("2. Transaksi pembelian obat");
                 System.out.println("3. Log-Out");
@@ -36,18 +34,17 @@ public class mainmenu {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-            // Jika pengguna adalah admin
             if ("admin".equalsIgnoreCase(loggedInRole)) {
-                boolean kembaliKeMenuUtama = false; // Flag untuk kembali ke menu utama
+                boolean kembaliKeMenuUtama = false;
                 switch (choice) {
-                    case 1 -> { // Kelola Data Dokter
+                    case 1 -> {
                         System.out.println("\n=== Kelola Data Dokter ===");
                         System.out.println("1. Tambah Data Dokter");
                         System.out.println("2. Edit Data Dokter");
                         System.out.println("3. Lihat Data Dokter");
                         System.out.println("4. Kembali");
                         System.out.print("Pilih Menu: ");
-                        int submenu = scanner.nextInt(); // Pilihan submenu untuk kelola dokter
+                        int submenu = scanner.nextInt();
                         switch (submenu) {
                             case 1 -> dl.tambahDokter();
                             case 2 -> dl.editDokter();
@@ -55,14 +52,14 @@ public class mainmenu {
                             case 4 -> kembaliKeMenuUtama = true;
                         }
                     }
-                    case 2 -> { // Kelola Data Obat
+                    case 2 -> {
                         System.out.println("\n=== Kelola Data Obat ===");
                         System.out.println("1. Tambah Data Obat");
                         System.out.println("2. Edit Data Obat");
                         System.out.println("3. Lihat Data Obat");
                         System.out.println("4. Kembali");
                         System.out.print("Pilih Menu: ");
-                        int submenu = scanner.nextInt(); // Pilihan submenu untuk kelola obat
+                        int submenu = scanner.nextInt();
                         switch (submenu) {
                             case 1 -> ol.tambahObat();
                             case 2 -> ol.editObat();
@@ -72,10 +69,10 @@ public class mainmenu {
                     }
                     case 3 -> kl.viewDataKunjungan();
                     case 4 -> po.viewDataTransaksiPembelianObat();
-                    case 5 -> { // Log-out
+                    case 5 -> {
                         System.out.println("Logout berhasil.");
-                        isLoggedOut = true; // Set flag isLoggedOut menjadi true untuk keluar dari loop
-                        loggedInRole = null; // Reset loggedInRole untuk memastikan pengguna keluar dari menu
+                        isLoggedOut = true;
+                        loggedInRole = null;
                     }
                     default -> System.out.println("Pilihan tidak valid.");
                 }
@@ -98,25 +95,25 @@ public class mainmenu {
                             default -> System.out.println("Pilihan tidak valid.");
                         }
                     }
-                    case 2 -> { // Transaksi Pembelian Obat
+                    case 2 -> {
                         System.out.println("\n=== Transaksi Pembelian Obat ===");
                         System.out.println("1. Tambah Transaksi");
                         System.out.println("2. View Transaksi");
                         System.out.println("3. Kembali");
                         System.out.print("Pilih Menu: ");
-                        int submenu = scanner.nextInt(); // Pilihan submenu untuk transaksi pembelian obat
+                        int submenu = scanner.nextInt();
                         switch (submenu) {
                             case 1 -> po.tambahPembelian();
                             case 2 -> po.viewDataTransaksiPembelianObat();
                             case 3 -> kembaliKeMenuUtama = true;
                         }
                     }
-                    case 3 -> { // Log-out
+                    case 3 -> {
                         System.out.println("Logout berhasil.");
                         isLoggedOut = true;
                         loggedInRole = null;
                     }
-                    default -> System.out.println("Pilihan tidak valid."); // Jika pilihan tidak valid
+                    default -> System.out.println("Pilihan tidak valid.");
                 }
             }
         }

@@ -65,6 +65,12 @@ public class KunjunganLinkedList {
     public void tambahKunjungan() {
         System.out.print("Masukkan ID Dokter: ");
         String idDokter = scanner.nextLine();
+
+        if (!dokterLinkedList.cekDokterById(idDokter)) {
+            System.out.println("ID Dokter tidak ditemukan. Tambahkan dokter terlebih dahulu.");
+            return;
+        }
+
         System.out.print("Masukkan Nama Pasien: ");
         String namaPasien = scanner.nextLine();
 

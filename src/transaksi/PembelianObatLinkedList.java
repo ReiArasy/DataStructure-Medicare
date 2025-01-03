@@ -1,5 +1,3 @@
-//test github
-
 package src.transaksi;
 
 import java.util.Scanner;
@@ -7,37 +5,31 @@ import src.manajemen.ObatLinkedList;
 
 public class PembelianObatLinkedList {
 
-    // Kelas internal untuk merepresentasikan data pembelian obat dalam linked list.
     private static class PembelianObat {
         String idTransaksi;
-        String idObat; // ID Obat untuk mencocokkan dengan data obat
+        String idObat;
         int jumlah;
         double totalHarga;
 
-        PembelianObat next; // Referensi ke node berikutnya.
+        PembelianObat next;
 
-        // Konstruktor untuk menginisialisasi data pembelian obat.
         public PembelianObat(String idTransaksi, String idObat, int jumlah, double totalHarga) {
             this.idTransaksi = idTransaksi;
             this.idObat = idObat;
             this.jumlah = jumlah;
             this.totalHarga = totalHarga;
-            this.next = null; // Awalnya, tidak ada node berikutnya.
+            this.next = null;
         }
     }
 
-    private PembelianObat head; // Pointer awal dari linked list (head).
+    private PembelianObat head;
     private final Scanner scanner = new Scanner(System.in);
-
-    // Referensi ke ObatLinkedList untuk mendapatkan data obat.
     private final ObatLinkedList obatLinkedList;
 
-    // Konstruktor dengan referensi ke ObatLinkedList
     public PembelianObatLinkedList(ObatLinkedList obatLinkedList) {
         this.obatLinkedList = obatLinkedList;
     }
 
-    // Metode untuk menambahkan transaksi pembelian obat berdasarkan ID obat.
     public void tambahPembelian() {
         System.out.println("\n==== Tambah Data Pembelian Obat ====");
         System.out.print("Masukkan ID Transaksi: ");
@@ -45,7 +37,6 @@ public class PembelianObatLinkedList {
         System.out.print("Masukkan ID Obat: ");
         String idObat = scanner.nextLine();
 
-        // Validasi apakah ID Obat ada dalam daftar obat.
         if (!obatLinkedList.cekObatById(idObat)) {
             System.out.println("ID Obat tidak ditemukan. Tambahkan obat terlebih dahulu.");
             return;
@@ -53,38 +44,40 @@ public class PembelianObatLinkedList {
 
         System.out.print("Masukkan Jumlah: ");
         int jumlah = scanner.nextInt();
-        scanner.nextLine(); // Konsumsi newline setelah angka
+        scanner.nextLine();
 
-        // Ambil harga obat dari ObatLinkedList
+        int stokTersedia = obatLinkedList.getStokObatById(idObat);
+        if (jumlah > stokTersedia) {
+            System.out.println("Stok tidak mencukupi. Stok tersedia: " + stokTersedia);
+            return;
+        }
+
         double hargaObat = obatLinkedList.getHargaObatById(idObat);
         double totalHarga = jumlah * hargaObat;
 
-        // Membuat node PembelianObat baru dengan data yang dimasukkan.
         PembelianObat newPembelian = new PembelianObat(idTransaksi, idObat, jumlah, totalHarga);
         if (head == null) {
-            // Jika linked list kosong, pembelian baru menjadi head.
             head = newPembelian;
         } else {
-            // Jika linked list tidak kosong, tambahkan pembelian di akhir.
             PembelianObat current = head;
             while (current.next != null) {
                 current = current.next;
             }
             current.next = newPembelian;
         }
+
+        obatLinkedList.kurangiStokObat(idObat, jumlah);
         System.out.println("Data pembelian obat berhasil ditambahkan.");
     }
 
-    // Metode untuk melihat semua data transaksi pembelian obat.
     public void viewDataTransaksiPembelianObat() {
         System.out.println("\n==== Data Transaksi Pembelian Obat ====");
         if (head == null) {
-            // Jika linked list kosong.
             System.out.println("Tidak ada data transaksi pembelian obat.");
             return;
         }
 
-        PembelianObat current = head; // Mulai dari head.
+        PembelianObat current = head;
         while (current != null) {
             System.out.println("ID Transaksi: " + current.idTransaksi);
             System.out.println("ID Obat: " + current.idObat);
@@ -92,7 +85,7 @@ public class PembelianObatLinkedList {
             System.out.println("Jumlah: " + current.jumlah);
             System.out.println("Total Harga: Rp" + current.totalHarga);
             System.out.println("---------------------");
-            current = current.next; // Lanjut ke node berikutnya.
+            current = current.next;
         }
     }
 }
