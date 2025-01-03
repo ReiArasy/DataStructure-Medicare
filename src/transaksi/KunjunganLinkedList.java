@@ -1,6 +1,7 @@
 package src.transaksi;
 
 import java.util.Scanner;
+import src.manajemen.DokterLinkedList;
 
 public class KunjunganLinkedList {
     private static class Kunjungan {
@@ -23,10 +24,42 @@ public class KunjunganLinkedList {
 
     private Kunjungan head;
     private final Scanner scanner;
+    private final DokterLinkedList dokterLinkedList;
 
-    public KunjunganLinkedList() {
+    public KunjunganLinkedList(DokterLinkedList dokterLinkedList) {
         this.head = null;
         this.scanner = new Scanner(System.in);
+        this.dokterLinkedList = dokterLinkedList;
+    }
+
+    public void menuTambahKunjungan() {
+        while (true) {
+            System.out.println("\nMenu Tambah Kunjungan Pasien:");
+            System.out.println("1. Lihat List Dokter");
+            System.out.println("2. Tambah Kunjungan");
+            System.out.println("0. Kembali ke Menu Utama");
+            System.out.print("Pilih opsi: ");
+
+            String pilihan = scanner.nextLine();
+
+            switch (pilihan) {
+                case "1":
+                    lihatDataDokter();
+                    break;
+                case "2":
+                    tambahKunjungan();
+                    break;
+                case "0":
+                    return;
+                default:
+                    System.out.println("Pilihan tidak valid. Coba lagi.");
+            }
+        }
+    }
+
+    public void lihatDataDokter() {
+        System.out.println("\n==== Daftar Dokter ====");
+        dokterLinkedList.lihatDataDokter();
     }
 
     public void tambahKunjungan() {
@@ -34,19 +67,19 @@ public class KunjunganLinkedList {
         String idDokter = scanner.nextLine();
         System.out.print("Masukkan Nama Pasien: ");
         String namaPasien = scanner.nextLine();
+
         int umur;
         while (true) {
             try {
                 System.out.print("Masukkan Umur: ");
                 umur = Integer.parseInt(scanner.nextLine());
-                if (umur > 0)
-                    break;
-                else
-                    System.out.println("Umur harus lebih dari 0. Coba lagi.");
+                if (umur > 0) break;
+                System.out.println("Umur harus lebih dari 0. Coba lagi.");
             } catch (NumberFormatException e) {
                 System.out.println("Input tidak valid. Masukkan angka.");
             }
         }
+
         System.out.print("Masukkan Jenis Kelamin: ");
         String jenisKelamin = scanner.nextLine();
         System.out.print("Masukkan Keluhan: ");
@@ -55,13 +88,13 @@ public class KunjunganLinkedList {
         Kunjungan kunjunganBaru = new Kunjungan(idDokter, namaPasien, umur, jenisKelamin, keluhan);
 
         if (head == null) {
-            head = kunjunganBaru; // Jika list kosong, set node baru sebagai head
+            head = kunjunganBaru;
         } else {
             Kunjungan temp = head;
             while (temp.next != null) {
-                temp = temp.next; // Telusuri hingga ke akhir list
+                temp = temp.next;
             }
-            temp.next = kunjunganBaru; // Tambahkan node baru di akhir
+            temp.next = kunjunganBaru;
         }
 
         System.out.println("Data kunjungan berhasil ditambahkan!\n");

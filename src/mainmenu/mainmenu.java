@@ -10,7 +10,7 @@ public class mainmenu {
     private static Scanner scanner = new Scanner(System.in);
     private static DokterLinkedList dl = new DokterLinkedList();
     private static ObatLinkedList ol = new ObatLinkedList();
-    private static KunjunganLinkedList kl = new KunjunganLinkedList();
+    private static KunjunganLinkedList kl = new KunjunganLinkedList(dl);
     private static PembelianObatLinkedList po = new PembelianObatLinkedList(ol);
 
     // Metode untuk menampilkan menu utama berdasarkan peran (admin atau dokter)
