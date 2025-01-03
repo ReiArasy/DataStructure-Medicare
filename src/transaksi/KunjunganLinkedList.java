@@ -3,14 +3,13 @@ package src.transaksi;
 import java.util.Scanner;
 
 public class KunjunganLinkedList {
-
     private static class Kunjungan {
         String idDokter;
         String namaPasien;
         int umur;
         String jenisKelamin;
         String keluhan;
-        Kunjungan next; // Referensi ke node berikutnya
+        Kunjungan next;
 
         public Kunjungan(String idDokter, String namaPasien, int umur, String jenisKelamin, String keluhan) {
             this.idDokter = idDokter;
@@ -18,15 +17,15 @@ public class KunjunganLinkedList {
             this.umur = umur;
             this.jenisKelamin = jenisKelamin;
             this.keluhan = keluhan;
-            this.next = null; // Inisialisasi sebagai node terakhir
+            this.next = null;
         }
     }
 
-    private Kunjungan head; // head dari linked list
+    private Kunjungan head;
     private final Scanner scanner;
 
     public KunjunganLinkedList() {
-        this.head = null; // Inisialisasi list kosong
+        this.head = null;
         this.scanner = new Scanner(System.in);
     }
 
@@ -40,8 +39,10 @@ public class KunjunganLinkedList {
             try {
                 System.out.print("Masukkan Umur: ");
                 umur = Integer.parseInt(scanner.nextLine());
-                if (umur > 0) break;
-                else System.out.println("Umur harus lebih dari 0. Coba lagi.");
+                if (umur > 0)
+                    break;
+                else
+                    System.out.println("Umur harus lebih dari 0. Coba lagi.");
             } catch (NumberFormatException e) {
                 System.out.println("Input tidak valid. Masukkan angka.");
             }
@@ -82,40 +83,6 @@ public class KunjunganLinkedList {
             System.out.println("Keluhan: " + temp.keluhan);
             System.out.println("---------------------");
             temp = temp.next;
-        }
-    }
-
-    public static void main(String[] args) {
-        KunjunganLinkedList list = new KunjunganLinkedList();
-        Scanner scanner = new Scanner(System.in);
-
-        while (true) {
-            System.out.println("\n1. Tambah Data Kunjungan");
-            System.out.println("2. Lihat Data Kunjungan");
-            System.out.println("3. Keluar");
-            System.out.print("Pilih opsi: ");
-            int pilihan;
-            try {
-                pilihan = Integer.parseInt(scanner.nextLine());
-            } catch (NumberFormatException e) {
-                System.out.println("Pilihan tidak valid. Masukkan angka.");
-                continue;
-            }
-
-            switch (pilihan) {
-                case 1:
-                    list.tambahKunjungan();
-                    break;
-                case 2:
-                    list.lihatDataKunjungan();
-                    break;
-                case 3:
-                    System.out.println("Keluar dari program...");
-                    scanner.close();
-                    return;
-                default:
-                    System.out.println("Pilihan tidak valid. Silakan coba lagi.");
-            }
         }
     }
 }
