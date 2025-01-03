@@ -70,22 +70,8 @@ public class PembelianObatLinkedList {
         System.out.println("Data pembelian obat berhasil ditambahkan.");
     }
 
-    public void viewDataTransaksiPembelianObat() {
-        System.out.println("\n==== Data Transaksi Pembelian Obat ====");
-        if (head == null) {
-            System.out.println("Tidak ada data transaksi pembelian obat.");
-            return;
-        }
-
-        PembelianObat current = head;
-        while (current != null) {
-            System.out.println("ID Transaksi: " + current.idTransaksi);
-            System.out.println("ID Obat: " + current.idObat);
-            System.out.println("Nama Obat: " + obatLinkedList.getNamaObatById(current.idObat));
-            System.out.println("Jumlah: " + current.jumlah);
-            System.out.println("Total Harga: Rp" + current.totalHarga);
-            System.out.println("---------------------");
-            current = current.next;
-        }
+    public void viewDataObat() {
+        System.out.println("\n==== Lihat List Obat ====");
+        obatLinkedList.lihatDataObat();
     }
 }

@@ -35,7 +35,6 @@ public class mainmenu {
             scanner.nextLine();
 
             if ("admin".equalsIgnoreCase(loggedInRole)) {
-                boolean kembaliKeMenuUtama = false;
                 switch (choice) {
                     case 1 -> {
                         System.out.println("\n=== Kelola Data Dokter ===");
@@ -49,7 +48,7 @@ public class mainmenu {
                             case 1 -> dl.tambahDokter();
                             case 2 -> dl.editDokter();
                             case 3 -> dl.lihatDataDokter();
-                            case 4 -> kembaliKeMenuUtama = true;
+                            case 4 -> {}
                         }
                     }
                     case 2 -> {
@@ -64,22 +63,18 @@ public class mainmenu {
                             case 1 -> ol.tambahObat();
                             case 2 -> ol.editObat();
                             case 3 -> ol.lihatDataObat();
-                            case 4 -> kembaliKeMenuUtama = true;
+                            case 4 -> {}
                         }
                     }
                     case 3 -> kl.viewDataKunjungan();
-                    case 4 -> po.viewDataTransaksiPembelianObat();
+                    case 4 -> po.viewDataObat();
                     case 5 -> {
                         System.out.println("Logout berhasil.");
                         isLoggedOut = true;
-                        loggedInRole = null;
                     }
                     default -> System.out.println("Pilihan tidak valid.");
                 }
-            }
-
-            else if ("dokter".equalsIgnoreCase(loggedInRole)) {
-                boolean kembaliKeMenuUtama = false;
+            } else if ("dokter".equalsIgnoreCase(loggedInRole)) {
                 switch (choice) {
                     case 1 -> {
                         System.out.println("\n=== Tambah Kunjungan Pasien ===");
@@ -91,27 +86,26 @@ public class mainmenu {
                         switch (submenu) {
                             case 1 -> dl.lihatDataDokter();
                             case 2 -> kl.tambahKunjungan();
-                            case 3 -> kembaliKeMenuUtama = true;
+                            case 3 -> {}
                             default -> System.out.println("Pilihan tidak valid.");
                         }
                     }
                     case 2 -> {
                         System.out.println("\n=== Transaksi Pembelian Obat ===");
                         System.out.println("1. Tambah Transaksi");
-                        System.out.println("2. View Transaksi");
+                        System.out.println("2. List Obat");
                         System.out.println("3. Kembali");
                         System.out.print("Pilih Menu: ");
                         int submenu = scanner.nextInt();
                         switch (submenu) {
                             case 1 -> po.tambahPembelian();
-                            case 2 -> po.viewDataTransaksiPembelianObat();
-                            case 3 -> kembaliKeMenuUtama = true;
+                            case 2 -> po.viewDataObat();
+                            case 3 -> {}
                         }
                     }
                     case 3 -> {
                         System.out.println("Logout berhasil.");
                         isLoggedOut = true;
-                        loggedInRole = null;
                     }
                     default -> System.out.println("Pilihan tidak valid.");
                 }

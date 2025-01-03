@@ -85,6 +85,7 @@ public class ObatLinkedList {
 
         Obat current = head;
         while (current != null) {
+            System.out.println("---------------------");
             System.out.println("ID Obat: " + current.idObat);
             System.out.println("Nama: " + current.nama);
             System.out.println("Stok: " + current.stok);
